@@ -24,8 +24,152 @@ blah, blah, blah, blah
 -->
 
    <head> 
+	    <title>Hello World</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+
+<script>
+        var mono_count = 0;
+        var strep_count = 0;
+
+
+        function monoAdd(){
+            mono_count = mono_count + 1;
+
+        }
+
+        function strepAdd(){
+            strep_count = strep_count + 1;
+        }
+	function illnessOutcome(){
+		var resultText = document.getElementById("results");
+		var monoPercentage = (mono_count/4)*100;
+		var strepPercentage = (strep_count/4)*100;
+		var results = resultText.innerHTML = "Probability it is mono =" + monoPercentage + "%" + "<br> Probability it is strep =" + strepPercentage + "%";
+		/*This function is to display the results. First, I am making resultText a variable as per the instructions.
+		Next, I am calculating percentages based on the numbers collected for monoAdd and strepAdd. I am doing this by dividing both by 4 -the number of questions- and then dividing by 100. 
+		Both percentages should add up to 100
+		Finally, to display my results I am making it a variable at the end of the function. The last page on the app will run this variable to display the results in a sentence.*/
+	}
+		
+
+
+  </script>
+
+
+
+<style>	
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+
+<body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Mono or Strep?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might be infected with mononucleosis or strep throat but aren't sure which one? Answer a few questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+        	<p>Do you have a runny nose and a cough?</p>  
+		<a href="#two"  onclick="monoAdd();" class="w3-btn w3-black"> Yes</a> <!--Here, I am adding buttons. The #two makes it turn to the next page after someone clicks the button-->
+         	<a href="#two"  onclick="strepAdd();" class="w3-btn w3-black">No</a>
+
+    	</div>
+</div>
+
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are you experiencing severe fatigue?</p>
+		<a href="#three"  onclick="monoAdd();" class="w3-btn w3-black"> Yes</a> <!--Here, I am adding buttons. The #three makes it turn to the next page after someone clicks the button-->
+         	<a href="#three"  onclick="strepAdd();" class="w3-btn w3-black">No</a>
+	</div>
+</div>	
+
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are there white patches on your tonsils?</p>
+		<a href="#four"  onclick="strepAdd();" class="w3-btn w3-black"> Yes</a> <!--Here, I am adding buttons. The #four makes it turn to the next page after someone clicks the button-->
+         	<a href="#four"  onclick="monoAdd();" class="w3-btn w3-black">No</a>
+	</div>
+</div>	
+
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Aer you experiencing swelling of the lymph nodes around your armpits and neck?</p>
+		<a href="#five"  onclick="monoAdd();" class="w3-btn w3-black"> Yes</a> <!--Here, I am adding buttons. The #five makes it turn to the next page after someone clicks the button-->
+         	<a href="#five"  onclick="strepAdd();" class="w3-btn w3-black">No</a>
+	</div>
+</div>	
+	
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Click below for your diagnosis</h1><!-- It was easier for me to make the results page two different pages. This page has the button which runs the function set up above to calculate the results-->
+	</div>
+	<div id="content" class="w3-container">
+		<a href="#six"  onclick="illnessOutcome();" class="w3-btn w3-black">Result</a>
+	</div>
+</div>	
+<div class="page" id="six">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Hope this helped!</h1><!--This page actually displays the result now that the function has run. I couldn't figure out how to do it all at once, so I did this instead.-->
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p id="results"></p><!--This displays the variable set up above: it will print a statement onto the page showing the exact percentages of allergy/cold-->
+	</div>
+</div>		
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+
       
-	   PUT YOUR OLD CODE IN HERE
 	   
    </body>
 </html>
